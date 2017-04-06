@@ -30,7 +30,7 @@ trait HasComments
     /**
      * @return string
      */
-    public function commentableModel(): string
+    public function commentableModel()
     {
         return config('commentable.model');
     }
@@ -38,7 +38,7 @@ trait HasComments
     /**
      * @return mixed
      */
-    public function comments(): MorphMany
+    public function comments()
     {
         return $this->morphMany($this->commentableModel(), 'commentable');
     }
@@ -50,7 +50,7 @@ trait HasComments
      *
      * @return static
      */
-    public function comment($data, Model $creator, Model $parent = null): Comment
+    public function comment($data, Model $creator, Model $parent = null)
     {
         $commentableModel = $this->commentableModel();
 
@@ -88,7 +88,7 @@ trait HasComments
      *
      * @return mixed
      */
-    public function deleteComment($id): bool
+    public function deleteComment($id)
     {
         $commentableModel = $this->commentableModel();
 
@@ -98,7 +98,7 @@ trait HasComments
     /**
      * @return mixed
      */
-    public function commentCount(): int
+    public function commentCount()
     {
         return $this->comments->count();
     }
