@@ -38,7 +38,7 @@ class Comment extends Model
     /**
      * @return bool
      */
-    public function hasChildren(): bool
+    public function hasChildren()
     {
         return $this->children()->count() > 0;
     }
@@ -46,7 +46,7 @@ class Comment extends Model
     /**
      * @return mixed
      */
-    public function commentable(): MorphTo
+    public function commentable()
     {
         return $this->morphTo();
     }
@@ -54,7 +54,7 @@ class Comment extends Model
     /**
      * @return mixed
      */
-    public function creator(): MorphTo
+    public function creator()
     {
         return $this->morphTo('creator');
     }
@@ -66,7 +66,7 @@ class Comment extends Model
      *
      * @return static
      */
-    public function createComment(Model $commentable, $data, Model $creator): self
+    public function createComment(Model $commentable, $data, Model $creator)
     {
         return $commentable->comments()->create(array_merge($data, [
             'creator_id'   => $creator->id,
@@ -80,7 +80,7 @@ class Comment extends Model
      *
      * @return mixed
      */
-    public function updateComment($id, $data): bool
+    public function updateComment($id, $data)
     {
         return (bool) static::find($id)->update($data);
     }
@@ -90,7 +90,7 @@ class Comment extends Model
      *
      * @return mixed
      */
-    public function deleteComment($id): bool
+    public function deleteComment($id)
     {
         return (bool) static::find($id)->delete();
     }
